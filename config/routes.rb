@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'user/new'
+
+  get 'user/show'
+
+  get 'user/edit'
+
   get 'report/index'
 
   get 'report/new'
