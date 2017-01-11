@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'report/index'
+
+  get 'report/new'
+
+  get 'report/show'
+
+  get 'report/edit'
+
   get 'recipe/index'
 
   get 'recipe/new'
