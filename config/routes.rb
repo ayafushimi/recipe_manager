@@ -1,25 +1,25 @@
 Rails.application.routes.draw do
-  get 'user/new'
+  get 'users/new'
 
-  get 'user/show'
+  get 'users/show'
 
-  get 'user/edit'
+  get 'users/edit'
 
-  get 'report/index'
+  get 'reports/index'
 
-  get 'report/new'
+  get 'reports/new'
 
-  get 'report/show'
+  get 'reports/show'
 
-  get 'report/edit'
+  get 'reports/edit'
 
-  get 'recipe/index'
+  get 'recipes/index'
 
-  get 'recipe/new'
+  get 'recipes/new'
 
-  get 'recipe/show'
+  get 'recipes/show'
 
-  get 'recipe/edit'
+  get 'recipes/edit'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
