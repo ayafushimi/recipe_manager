@@ -1,3 +1,7 @@
 class Recipe < ApplicationRecord
-  belongs_to :user
+  has many :recipe_ingredients
+  has many :ingredients, through: :recipe_ingredients
+  has many :directions
+  has many :reports
+  belongs_to :creator, class_name: "User"
 end
