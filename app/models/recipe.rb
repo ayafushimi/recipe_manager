@@ -1,8 +1,8 @@
 class Recipe < ApplicationRecord
-  has many :recipe_ingredients
-  has many :ingredients, through: :recipe_ingredients
-  has many :directions
-  has many :reports
+  has_many :recipe_ingredients
+  has_many :ingredients, through: :recipe_ingredients
+  has_many :directions
+  has_many :reports
   belongs_to :creator, class_name: "User"
 
   accepts_nested_attributes_for :recipe_ingredients, :ingredients, :directions
