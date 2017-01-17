@@ -6,4 +6,10 @@ class Recipe < ApplicationRecord
   belongs_to :creator, class_name: "User", foreign_key: "user_id"
 
   accepts_nested_attributes_for :recipe_ingredients, :directions
+
+  def average_rate
+    reports.each do |report|
+      report.rate
+    end
+  end
 end
