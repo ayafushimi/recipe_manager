@@ -18,4 +18,8 @@ class Recipe < ApplicationRecord
       sum / reports.size
     end
   end
+
+  def self.has_report
+    
+  end
 end
