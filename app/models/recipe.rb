@@ -8,10 +8,14 @@ class Recipe < ApplicationRecord
   accepts_nested_attributes_for :recipe_ingredients, :directions
 
   def average_rate
-    sum = 0
-    reports.each do |report|
-      sum += report.rate
+    if reports.size == 0
+      return "there is no report"
+    else
+      sum = 0
+      reports.each do |report|
+        sum += report.rate
+      end
+      sum / reports.size
     end
-    sum / reports.size
   end
 end
