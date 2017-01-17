@@ -20,6 +20,6 @@ class Recipe < ApplicationRecord
   end
 
   def self.has_report
-    
+    self.where(id: Report.pluck(:recipe_id).uniq)
   end
 end
