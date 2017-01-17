@@ -100,3 +100,28 @@ Recipe.find_by(title:"stew").update(
     {text:"Put roux and melt it"}
   ]
 )
+
+reports = [
+  {
+    rate: 5,
+    comment: "easy and delicious!",
+    recipe: Recipe.find(1),
+    user: User.find(1)
+  },
+  {
+    rate: 4,
+    comment: nil,
+    recipe: Recipe.find(1),
+    user: User.find(2)
+  },
+  {
+    rate: 1,
+    comment: "not my taste",
+    recipe: Recipe.find(2),
+    user: User.find(1)
+  }
+]
+
+reports.each do |a|
+  Report.create(a)
+end
