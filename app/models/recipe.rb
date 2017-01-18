@@ -46,4 +46,8 @@ class Recipe < ApplicationRecord
   def self.by_ingredient(ingredient)
     self.where(id: RecipeIngredient.where(ingredient_id: ingredient.id).pluck(:recipe_id).uniq)
   end
+
+  def self.time_under(int)
+    self.where("time <= ?", int)
+  end
 end
