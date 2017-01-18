@@ -19,14 +19,6 @@ class Recipe < ApplicationRecord
     end
   end
 
-  def self.has_report
-    self.where(id: Report.pluck(:recipe_id).uniq)
-  end
-
-  def self.has_no_report
-    self.where.not(id: Report.pluck(:recipe_id).uniq)
-  end
-
   def self.order_by_rate
     self.joins(:reports).select("'recipes'.'id', 'recipes'.'user_id', 'recipes'.'title', 'recipes'.'time', 'recipes'.'link','reports'.'recipe_id', AVG('reports'.'rate')").group("'reports'.'recipe_id'").order("AVG('reports'.'rate') DESC")
   end
@@ -39,8 +31,20 @@ class Recipe < ApplicationRecord
     self.order(:time)
   end
 
+  def self.has_report
+    self.where(id: Report.pluck(:recipe_id).uniq)
+  end
+
+  def self.has_no_report
+    self.where.not(id: Report.pluck(:recipe_id).uniq)
+  end
+
   def self.rate_over(int)
     self.joins(:reports).select("'recipes'.'id', 'recipes'.'user_id', 'recipes'.'title', 'recipes'.'time', 'recipes'.'link','reports'.'recipe_id', AVG('reports'.'rate')").group("'reports'.'recipe_id'").having("AVG('reports'.'rate') >= ?", int)
+  end
+
+  def self.time_under(int)
+    self.where("time <= ?", int)
   end
 
   def self.by_creator(user)
@@ -49,10 +53,6 @@ class Recipe < ApplicationRecord
 
   def self.by_ingredient(ingredient)
     self.where(id: RecipeIngredient.where(ingredient_id: ingredient.id).pluck(:recipe_id).uniq)
-  end
-
-  def self.time_under(int)
-    self.where("time <= ?", int)
   end
 
   def self.has_report_by(user)
