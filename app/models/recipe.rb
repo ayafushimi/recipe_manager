@@ -42,5 +42,8 @@ class Recipe < ApplicationRecord
   def self.by_creator(user)
     self.where(user_id: user.id)
   end
-  
+
+  def self.by_ingredient(ingredient)
+    
+  end
 end
