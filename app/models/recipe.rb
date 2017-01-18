@@ -23,6 +23,10 @@ class Recipe < ApplicationRecord
     self.where(id: Report.pluck(:recipe_id).uniq)
   end
 
+  def self.has_no_report
+    self.where.not(id: Report.pluck(:recipe_id).uniq)
+  end
+
   def self.order_by_rate
     self.joins(:reports).select("'recipes'.'id', 'recipes'.'user_id', 'recipes'.'title', 'recipes'.'time', 'recipes'.'link','reports'.'recipe_id', AVG('reports'.'rate')").group("'reports'.'recipe_id'").order("AVG('reports'.'rate') DESC")
   end
