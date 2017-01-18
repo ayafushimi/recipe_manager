@@ -35,4 +35,7 @@ class Recipe < ApplicationRecord
     all.sort {|a,b| b.average_rate <=> a.average_rate}
   end
 
+  def self.rate_over(int)
+
+  end
 end
