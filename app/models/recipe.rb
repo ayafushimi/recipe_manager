@@ -43,6 +43,14 @@ class Recipe < ApplicationRecord
     self.joins(:reports).select("'recipes'.'id', 'recipes'.'user_id', 'recipes'.'title', 'recipes'.'time', 'recipes'.'link','reports'.'recipe_id', AVG('reports'.'rate')").group("'reports'.'recipe_id'").having("AVG('reports'.'rate') >= ?", int)
   end
 
+  def self.rate_under(int)
+    self.joins(:reports).select("'recipes'.'id', 'recipes'.'user_id', 'recipes'.'title', 'recipes'.'time', 'recipes'.'link','reports'.'recipe_id', AVG('reports'.'rate')").group("'reports'.'recipe_id'").having("AVG('reports'.'rate') <= ?", int)
+  end
+
+  def self.time_over(int)
+    self.where("time >= ?", int)
+  end
+
   def self.time_under(int)
     self.where("time <= ?", int)
   end
