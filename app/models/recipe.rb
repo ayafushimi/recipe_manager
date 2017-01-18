@@ -52,6 +52,6 @@ class Recipe < ApplicationRecord
   end
 
   def self.has_report_by(user)
-
+    self.joins(:reports).where("'reports'.'user_id' = ?", user.id)
   end
 end
