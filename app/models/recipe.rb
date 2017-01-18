@@ -50,4 +50,8 @@ class Recipe < ApplicationRecord
   def self.time_under(int)
     self.where("time <= ?", int)
   end
+
+  def self.has_report_by(user)
+
+  end
 end
