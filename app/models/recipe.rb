@@ -35,6 +35,10 @@ class Recipe < ApplicationRecord
     all.sort {|a,b| b.average_rate <=> a.average_rate}
   end
 
+  def self.order_by_time
+    self.order(:time)
+  end
+
   def self.rate_over(int)
     self.joins(:reports).select("'recipes'.'id', 'recipes'.'user_id', 'recipes'.'title', 'recipes'.'time', 'recipes'.'link','reports'.'recipe_id', AVG('reports'.'rate')").group("'reports'.'recipe_id'").having("AVG('reports'.'rate') >= ?", int)
   end
