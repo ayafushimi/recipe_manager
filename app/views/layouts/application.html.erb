@@ -15,7 +15,13 @@
         <nav>
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "Home", '/' %></li>
-            <li><%= link_to "Log in", '#' %></li>
+            <% if logged_in? %>
+            <li><%= link_to "My Page", users_path(current_user) %></li>
+            <li><%= link_to "Sign out", signout_path %></li>
+            <% else %>
+            <li><%= link_to "Sign up", signup_path %></li>
+            <li><%= link_to "Sign in", signin_path %></li>
+            <% end %>
           </ul>
         </nav>
       </div>
