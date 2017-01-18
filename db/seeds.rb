@@ -42,6 +42,12 @@ recipes = [
     time: 60,
     link: nil,
     creator:User.find(2)
+  },
+  {
+    title: "French fries",
+    time: 20,
+    link: nil,
+    creator:User.find(1)
   }
 ]
 
@@ -49,7 +55,7 @@ recipes.each do |a|
   Recipe.create(a)
 end
 
-Recipe.find_by(title:"steak").update(
+Recipe.find(1).update(
   recipe_ingredients_attributes: [
     {
       ingredient_attributes:{title:"beef"},
@@ -69,7 +75,7 @@ Recipe.find_by(title:"steak").update(
   ]
 )
 
-Recipe.find_by(title:"stew").update(
+Recipe.find(2).update(
   recipe_ingredients_attributes: [
     {
       ingredient_attributes:{title:"beef"},
@@ -98,6 +104,20 @@ Recipe.find_by(title:"stew").update(
     {text:"Pour 3 cups water"},
     {text:"Simmer until vegetables get soft"},
     {text:"Put roux and melt it"}
+  ]
+)
+
+Recipe.find(3).update(
+  recipe_ingredients_attributes: [
+    {
+      ingredient_attributes:{title:"potato"},
+      quantity:100,
+      unit:"g"
+    }
+  ],
+  directions_attributes: [
+    {text:"Slice potatoes into wedges"},
+    {text:"Fry potatoes"}
   ]
 )
 
