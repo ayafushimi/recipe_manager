@@ -38,4 +38,9 @@ class Recipe < ApplicationRecord
   def self.rate_over(int)
     self.joins(:reports).select("'recipes'.'id', 'recipes'.'user_id', 'recipes'.'title', 'recipes'.'time', 'recipes'.'link','reports'.'recipe_id', AVG('reports'.'rate')").group("'reports'.'recipe_id'").having("AVG('reports'.'rate') >= ?", int)
   end
+
+  def self.by_creator(user)
+    self.where(user_id: user.id)
+  end
+  
 end
