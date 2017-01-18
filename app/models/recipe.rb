@@ -9,7 +9,7 @@ class Recipe < ApplicationRecord
 
   def average_rate
     if reports.size == 0
-      return "there is no report"
+      return 0
     else
       sum = 0
       reports.each do |report|
@@ -26,4 +26,9 @@ class Recipe < ApplicationRecord
   def self.order_by_rate
     self.joins(:reports).select("'recipes'.'id', 'recipes'.'user_id', 'recipes'.'title', 'recipes'.'time', 'recipes'.'link','reports'.'recipe_id', AVG('reports'.'rate')").group("'reports'.'recipe_id'").order("AVG('reports'.'rate') DESC")
   end
+
+  def self.order_by_rate_include_no_report
+    all.sort {|a,b| b.average_rate <=> a.average_rate}
+  end
+
 end
