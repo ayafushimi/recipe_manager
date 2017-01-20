@@ -12,3 +12,12 @@
     <% end %>
   </ul>
 </div>
+
+<div class="directions">
+  <h2>Directions</h2>
+  <ol>
+    <% @recipe.directions.each do |d| %>
+      <li><%= d.text %></li>
+    <% end %>
+  </ol>
+</div>
