@@ -28,6 +28,16 @@
       </div>
     <% end %>
     <br>
+
+    <%= f.label "Directions" %>
+    <ol>
+      <%= f.fields_for(:directions) do |df| %>
+        <div class="form-group">
+          <li><%= df.text_field :text, class: "form-control" %></li>
+        </div>
+      <% end %>
+    </ol>
+
     <div class="form-group">
       <%= f.submit "Create new recipe", class: "btn btn-primary" %>
     </div>
