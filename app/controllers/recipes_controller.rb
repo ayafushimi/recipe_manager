@@ -19,6 +19,10 @@ class RecipesController < ApplicationController
     @recipe.directions.build
   end
 
+  def create
+
+  end
+
   def show
     @recipe = Recipe.find(params[:id])
   end
