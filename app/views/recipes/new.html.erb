@@ -1,2 +1,13 @@
-<h1>Recipe#new</h1>
-<p>Find me in app/views/recipe/new.html.erb</p>
+<h1>Add new recipe</h1>
+
+<div class="form-field">
+  <%= form_for(@recipe) do |f| %>
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+
+  
+    <%= f.submit "Create new recipe", class: "btn btn-primary" %>
+  <% end %>
+</div>
