@@ -4,6 +4,13 @@ class RecipesController < ApplicationController
   end
 
   def new
+    @recipe = Recipe.new
+    @recipe.recipe_ingredients.build.build_ingredient
+    @recipe.recipe_ingredients.build.build_ingredient
+    @recipe.recipe_ingredients.build.build_ingredient
+    @recipe.recipe_ingredients.build.build_ingredient
+    @recipe.recipe_ingredients.build.build_ingredient
+    @recipe.recipe_ingredients.build.build_ingredient
   end
 
   def show
