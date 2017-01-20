@@ -9,6 +9,13 @@
 
     <%= f.fields_for(:recipe_ingredients) do |rif| %>
       <div class="form-inline">
+        <%= rif.fields_for(:ingredient) do |ingf| %>
+          <div class="form-group">
+            <%= ingf.label :title, "Ingredient" %>
+            <%= ingf.text_field :title, class: "form-control" %>
+          </div>
+        <% end %>
+
         <div class="form-group">
           <%= rif.label :quantity %>
           <%= rif.number_field :quantity, class: "form-control" %>
