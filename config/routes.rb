@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :reports, shallow: true
   end
 
-  resource :users, only: [:create, :show, :edit, :update, :destroy]
+  resources :users, only: [:create, :show, :edit, :update, :destroy]
   get 'signup', to: 'users#new', as: :signup
 
   resource :sessions, only: [:create]
