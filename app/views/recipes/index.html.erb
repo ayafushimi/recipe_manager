@@ -1,5 +1,9 @@
 <h1>Recipes</h1>
 
+<% if logged_in? %>
+  <%= link_to "Add new recipe", new_recipe_path, class: "btn btn-lg btn-primary" %>
+<% end %>
+
 <div class="recipes">
   <ul>
     <% @recipes.each do |recipe| %>
