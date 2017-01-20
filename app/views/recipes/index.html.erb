@@ -3,7 +3,10 @@
 <div class="recipes">
   <ul>
     <% @recipes.each do |recipe| %>
-      <li><%=   %></li>
+      <li>
+        <%=  link_to recipe.title, recipe_path(recipe), id:"recipe_title" %>
+        <p><%= recipe.time %>min | <%= recipe.average_rate %> | <%= recipe.reports.count %>reports</p>
+      </li>
     <% end %>
   </ul>
 </div>
