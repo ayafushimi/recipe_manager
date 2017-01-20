@@ -21,3 +21,21 @@
     <% end %>
   </ol>
 </div>
+
+<div class="reports">
+  <% if logged_in? %>
+    <%= link_to "Make report", new_recipe_report_path(@recipe), class: "btn btn-lg btn-primary" %>
+  <% end %>
+
+  <h2>Reports</h2>
+  <ul>
+    <% @recipe.reports.each do |r| %>
+      <li>
+        <%= r.rate %>
+        <p><%= r.comment %></p>
+      </li>
+    <% end %>
+  </ul>
+
+  <%= link_to "See all reports", recipe_reports_path(@recipe) %>
+</div>
