@@ -1,2 +1,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+/* form */
+
+li .form-control {
+  display: inline-block;
+  margin-bottom: 10px;
+}
