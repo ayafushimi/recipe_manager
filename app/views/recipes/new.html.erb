@@ -7,26 +7,31 @@
       <%= f.text_field :title, class: "form-control" %>
     </div>
 
-    <%= f.fields_for(:recipe_ingredients) do |rif| %>
-      <div class="form-inline">
-        <%= rif.fields_for(:ingredient) do |ingf| %>
-          <div class="form-group">
-            <%= ingf.label :title, "Ingredient" %>
-            <%= ingf.text_field :title, class: "form-control" %>
+    <%= f.label "Ingredients" %>
+    <ul>
+      <%= f.fields_for(:recipe_ingredients) do |rif| %>
+        <li>
+          <div class="form-inline">
+            <%= rif.fields_for(:ingredient) do |ingf| %>
+              <div class="form-group">
+                <%= ingf.label :title, "Name" %>
+                <%= ingf.text_field :title, class: "form-control" %>
+              </div>
+            <% end %>
+
+            <div class="form-group">
+              <%= rif.label :quantity %>
+              <%= rif.number_field :quantity, class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= rif.label :unit %>
+              <%= rif.text_field :unit, class: "form-control" %>
+            </div>
           </div>
-        <% end %>
-
-        <div class="form-group">
-          <%= rif.label :quantity %>
-          <%= rif.number_field :quantity, class: "form-control" %>
-        </div>
-
-        <div class="form-group">
-          <%= rif.label :unit %>
-          <%= rif.text_field :unit, class: "form-control" %>
-        </div>
-      </div>
-    <% end %>
+        </li>
+      <% end %>
+    </ul>
     <br>
 
     <%= f.label "Directions" %>
