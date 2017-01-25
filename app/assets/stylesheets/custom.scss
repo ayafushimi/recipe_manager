@@ -19,17 +19,6 @@
   text-decoration: none;
 }
 
-/* form */
-
-li .form-control {
-  display: inline-block;
-  margin-bottom: 10px;
-}
-
-li .form-inline .form-control {
-  margin-right: 10px;
-}
-
 /* container next to header */
 
 @media (max-width: 767px) {
@@ -42,4 +31,26 @@ li .form-inline .form-control {
   header + div.container {
     margin-top: 51px;
   }
+}
+
+/* recipe */
+h1 div.recipe-editor {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+h2 div.report-editor {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+/* form */
+
+li .form-control {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+li .form-inline .form-control {
+  margin-right: 10px;
 }
