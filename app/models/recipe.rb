@@ -6,10 +6,14 @@ class Recipe < ApplicationRecord
   belongs_to :creator, class_name: "User", foreign_key: "user_id"
 
   accepts_nested_attributes_for :recipe_ingredients, :directions
-  before_save :erase_empty_directions, :erase_empty_ingredients
+  before_save :erase_empty_directions, :erase_empty_ingredients, :erase_empty_recipe_ingredients
+
+  def erase_empty_recipe_ingredients
+    self.recipe_ingredients = self.recipe_ingredients.select {|ri| ri.ingredient.title != ''}
+  end
 
   def erase_empty_ingredients
-    self.ingredients = self.ingredients.select {|d| d.title != ''}
+    self.ingredients = self.ingredients.select {|i| i.title != ''}
   end
 
   def erase_empty_directions
