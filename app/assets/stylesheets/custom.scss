@@ -34,12 +34,20 @@
 }
 
 /* recipe */
+
 h1 div.recipe-editor {
   display: inline-block;
   margin-left: 10px;
 }
 
 h2 div.report-editor {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+/* report */
+
+li div.report-editor {
   display: inline-block;
   margin-left: 5px;
 }
