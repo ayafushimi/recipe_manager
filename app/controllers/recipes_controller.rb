@@ -5,18 +5,10 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    @recipe.recipe_ingredients.build.build_ingredient
-    @recipe.recipe_ingredients.build.build_ingredient
-    @recipe.recipe_ingredients.build.build_ingredient
-    @recipe.recipe_ingredients.build.build_ingredient
-    @recipe.recipe_ingredients.build.build_ingredient
-    @recipe.recipe_ingredients.build.build_ingredient
-    @recipe.directions.build
-    @recipe.directions.build
-    @recipe.directions.build
-    @recipe.directions.build
-    @recipe.directions.build
-    @recipe.directions.build
+    6.times {
+      @recipe.recipe_ingredients.build.build_ingredient
+      @recipe.directions.build
+    }
   end
 
   def create
