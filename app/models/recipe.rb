@@ -7,6 +7,7 @@ class Recipe < ApplicationRecord
 
   accepts_nested_attributes_for :recipe_ingredients, :directions
   before_save :erase_empty_directions, :erase_empty_ingredients, :erase_empty_recipe_ingredients
+  before_destroy :delete_children
 
   def erase_empty_recipe_ingredients
     self.recipe_ingredients = self.recipe_ingredients.select {|ri| ri.ingredient.title != ''}
@@ -18,6 +19,11 @@ class Recipe < ApplicationRecord
 
   def erase_empty_directions
     self.directions = self.directions.select {|d| d.text != ''}
+  end
+
+  def delete_children
+    self.directions.each {|d| d.destroy}
+    self.recipe_ingredients.each {|ri| ri.destroy}
   end
 
   def average_rate
