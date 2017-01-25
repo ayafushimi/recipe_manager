@@ -32,6 +32,15 @@ class RecipesController < ApplicationController
     }
   end
 
+  def update
+    recipe = Recipe.find(params[:id])
+    if recipe.update(recipe_params)
+      redirect_to recipe_path(recipe)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def recipe_params
@@ -39,11 +48,12 @@ class RecipesController < ApplicationController
       :title,
       :user_id,
       recipe_ingredients_attributes: [
+        :id,
         :quantity,
         :unit,
-        ingredient_attributes: [:title]
+        ingredient_attributes: [:id, :title]
       ],
-      directions_attributes: [:text]
+      directions_attributes: [:id, :text]
     )
   end
 end
