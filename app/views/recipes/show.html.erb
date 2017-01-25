@@ -1,7 +1,16 @@
 <div class="recipe-title">
-  <h1><%= @recipe.title %></h1>
+  <h1>
+    <%= @recipe.title %>
+    <div class="recipe-editor">
+      <% if logged_in? %>
+        <%= link_to "Edit", edit_recipe_path(@recipe), class: "btn btn-sm btn-primary" %>
+        <%= link_to "Delete", recipe_path(@recipe), method: :delete, class: "btn btn-sm btn-default" %>
+      <% end %>
+    </div>
+  </h1>
   <h3><%= @recipe.time %>min | <%= @recipe.average_rate %> | <%= @recipe.reports.count %> reports</h3>
   <p>Recipe by: <%= link_to @recipe.creator.username, user_path(@recipe.creator) %></p>
+
 </div>
 
 <div class="ingredients">
@@ -23,11 +32,15 @@
 </div>
 
 <div class="reports">
-  <% if logged_in? %>
-    <%= link_to "Make report", new_recipe_report_path(@recipe), class: "btn btn-lg btn-primary" %>
-  <% end %>
+  <h2>
+    Reports
+    <div class="report-editor">
+      <% if logged_in? %>
+        <%= link_to "Add new report", new_recipe_report_path(@recipe), class: "btn btn-sm btn-primary" %>
+      <% end %>
+    </div>
+  </h2>
 
-  <h2>Reports</h2>
   <ul>
     <% @recipe.reports.each do |r| %>
       <li>
