@@ -2,8 +2,8 @@
   <%= report.rate %> by <%= link_to report.user.username, user_path(report.user) %>
   <div class="report-editor">
     <% if report.user == current_user %>
-      <%= link_to "Edit", edit_recipe_path(@recipe), class: "btn btn-sm btn-primary" %>
-      <%= link_to "Delete", recipe_path(@recipe), method: :delete, class: "btn btn-sm btn-default" %>
+      <%= link_to "Edit", edit_report_path(report), class: "btn btn-xs btn-primary" %>
+      <%= link_to "Delete", report_path(report), method: :delete, class: "btn btn-xs btn-default" %>
     <% end %>
   </div>
   <p><%= report.comment %></p>
