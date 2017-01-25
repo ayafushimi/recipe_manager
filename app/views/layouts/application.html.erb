@@ -13,6 +13,7 @@
       <div class="container">
         <%= link_to "Recipe Manager", '/', id: "logo" %>
         <nav>
+          <p class="navbar-text">Signed in as <%= current_user.username %></p>
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "Home", '/' %></li>
             <% if logged_in? %>
