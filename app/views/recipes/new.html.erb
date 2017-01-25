@@ -43,7 +43,7 @@
       <% end %>
     </ol>
 
-    <%= f.hidden_field(:creator, value: current_user) %>
+    <%= f.hidden_field(:user_id, value: current_user.id) %>
 
     <div class="form-group">
       <%= f.submit "Create new recipe", class: "btn btn-primary" %>
