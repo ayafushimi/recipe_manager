@@ -11,3 +11,17 @@ li .form-control {
 li .form-inline .form-control {
   margin-right: 10px;
 }
+
+/* container next to header */
+
+@media (max-width: 767px) {
+  header + div.container {
+    margin-top: 175px;
+  }
+}
+
+@media (min-width: 768px) {
+  header + div.container {
+    margin-top: 90px;
+  }
+}
