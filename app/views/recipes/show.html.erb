@@ -42,13 +42,8 @@
   </h2>
 
   <ul>
-    <% @recipe.reports.each do |r| %>
-      <li>
-        <%= r.rate %> by <%= link_to r.user.username, user_path(r.user) %>
-        <p><%= r.comment %></p>
-      </li>
-    <% end %>
+    <%= render partial: "reports/reports", collection: @recipe.reports, as: :report %>
   </ul>
-
+  
   <%= link_to "See all reports", recipe_reports_path(@recipe) %>
 </div>
