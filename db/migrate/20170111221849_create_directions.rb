@@ -1,7 +1,7 @@
 class CreateDirections < ActiveRecord::Migration[5.0]
   def change
     create_table :directions do |t|
-      t.belongs_to :recipe, foreign_key: true
+      t.integer :recipe_id
       t.text :text
 
       t.timestamps

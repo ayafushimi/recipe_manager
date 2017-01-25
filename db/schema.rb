@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 20170111223534) do
     t.text     "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["recipe_id"], name: "index_directions_on_recipe_id"
   end
 
   create_table "ingredients", force: :cascade do |t|
@@ -33,8 +32,6 @@ ActiveRecord::Schema.define(version: 20170111223534) do
     t.string   "unit"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.index ["ingredient_id"], name: "index_recipe_ingredients_on_ingredient_id"
-    t.index ["recipe_id"], name: "index_recipe_ingredients_on_recipe_id"
   end
 
   create_table "recipes", force: :cascade do |t|
@@ -44,7 +41,6 @@ ActiveRecord::Schema.define(version: 20170111223534) do
     t.text     "link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
   create_table "reports", force: :cascade do |t|
@@ -54,8 +50,6 @@ ActiveRecord::Schema.define(version: 20170111223534) do
     t.text     "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["recipe_id"], name: "index_reports_on_recipe_id"
-    t.index ["user_id"], name: "index_reports_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
