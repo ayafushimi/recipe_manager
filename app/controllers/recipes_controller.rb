@@ -25,6 +25,11 @@ class RecipesController < ApplicationController
   end
 
   def edit
+    @recipe = Recipe.find(params[:id])
+    6.times {
+      @recipe.recipe_ingredients.build.build_ingredient
+      @recipe.directions.build
+    }
   end
 
   private
