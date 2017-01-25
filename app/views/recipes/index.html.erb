@@ -1,15 +1,18 @@
-<h1>Recipes</h1>
-
-<% if logged_in? %>
-  <%= link_to "Add new recipe", new_recipe_path, class: "btn btn-lg btn-primary" %>
-<% end %>
+<h1>
+  Recipes
+  <div class="recipe-editor">
+    <% if logged_in? %>
+      <%= link_to "Add new recipe", new_recipe_path, class: "btn btn-sm btn-primary" %>
+    <% end %>
+  </div>
+</h1>
 
 <div class="recipes">
   <ul>
     <% @recipes.each do |recipe| %>
       <li>
-        <%=  link_to recipe.title, recipe_path(recipe), id:"recipe_title" %>
-        <p><%= recipe.time %>min | <%= recipe.average_rate %> | <%= recipe.reports.count %>reports</p>
+        <h2><%=  link_to recipe.title, recipe_path(recipe), id:"recipe_title" %></h2>
+        <p><%= recipe.time %>min | <%= recipe.average_rate %> | <%= recipe.reports.count %> reports -- Recipe by: <%= link_to recipe.creator.username, user_path(recipe.creator) %></p>
       </li>
     <% end %>
   </ul>
