@@ -35,91 +35,82 @@ recipes = [
     title: "steak",
     time: 20,
     link: nil,
-    creator:User.find(1)
+    creator:User.find(1),
+    recipe_ingredients_attributes: [
+      {
+        ingredient_attributes:{title:"beef"},
+        quantity:400,
+        unit:"g"
+      },
+      {
+        ingredient_attributes:{title:"garlic"},
+        quantity:1,
+        unit:"piece"
+      }
+    ],
+    directions_attributes: [
+      {text:"Warm meat to room temperature"},
+      {text:"Deep fried sliced garlic on low heat with 2 tablespoons of oil"},
+      {text:"Remove the garlic while leaving the oil and fry meat with high heat"}
+    ]
   },
   {
     title: "stew",
     time: 60,
     link: nil,
-    creator:User.find(2)
+    creator:User.find(2),
+    recipe_ingredients_attributes: [
+      {
+        ingredient_attributes:{title:"beef"},
+        quantity:200,
+        unit:"g"
+      },
+      {
+        ingredient_attributes:{title:"onion"},
+        quantity:150,
+        unit:"g"
+      },
+      {
+        ingredient_attributes:{title:"potato"},
+        quantity:100,
+        unit:"g"
+      },
+      {
+        ingredient_attributes:{title:"carrot"},
+        quantity:80,
+        unit:"g"
+      }
+    ],
+    directions_attributes: [
+      {text:"Cut meet and vegetables into bite-sized pieces"},
+      {text:"Fry meet and vegetables"},
+      {text:"Pour 3 cups water"},
+      {text:"Simmer until vegetables get soft"},
+      {text:"Put roux and melt it"}
+    ]
   },
   {
     title: "French fries",
     time: 20,
     link: nil,
-    creator:User.find(1)
+    creator:User.find(1),
+    recipe_ingredients_attributes: [
+      {
+        ingredient_attributes:{title:"potato"},
+        quantity:100,
+        unit:"g"
+      }
+    ],
+    directions_attributes: [
+      {text:"Slice potatoes into wedges"},
+      {text:"Fry potatoes"}
+    ]
   }
 ]
 
 recipes.each do |a|
   Recipe.create(a)
 end
-
-Recipe.find(1).update(
-  recipe_ingredients_attributes: [
-    {
-      ingredient_attributes:{title:"beef"},
-      quantity:400,
-      unit:"g"
-    },
-    {
-      ingredient_attributes:{title:"garlic"},
-      quantity:1,
-      unit:"piece"
-    }
-  ],
-  directions_attributes: [
-    {text:"Warm meat to room temperature"},
-    {text:"Deep fried sliced garlic on low heat with 2 tablespoons of oil"},
-    {text:"Remove the garlic while leaving the oil and fry meat with high heat"}
-  ]
-)
-
-Recipe.find(2).update(
-  recipe_ingredients_attributes: [
-    {
-      ingredient_attributes:{title:"beef"},
-      quantity:200,
-      unit:"g"
-    },
-    {
-      ingredient_attributes:{title:"onion"},
-      quantity:150,
-      unit:"g"
-    },
-    {
-      ingredient_attributes:{title:"potato"},
-      quantity:100,
-      unit:"g"
-    },
-    {
-      ingredient_attributes:{title:"carrot"},
-      quantity:80,
-      unit:"g"
-    }
-  ],
-  directions_attributes: [
-    {text:"Cut meet and vegetables into bite-sized pieces"},
-    {text:"Fry meet and vegetables"},
-    {text:"Pour 3 cups water"},
-    {text:"Simmer until vegetables get soft"},
-    {text:"Put roux and melt it"}
-  ]
-)
-
-Recipe.find(3).update(
-  recipe_ingredients_attributes: [
-    {
-      ingredient_attributes:{title:"potato"},
-      quantity:100,
-      unit:"g"
-    }
-  ],
-  directions_attributes: [
-    {text:"Slice potatoes into wedges"},
-    {text:"Fry potatoes"}
-  ]
-)
 
 reports = [
   {
