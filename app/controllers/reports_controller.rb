@@ -5,9 +5,8 @@ class ReportsController < ApplicationController
   end
 
   def new
-  end
-
-  def show
+    @recipe = Recipe.find(params[:recipe_id])
+    @report = @recipe.reports.build
   end
 
   def edit
