@@ -40,6 +40,11 @@ h1 div.recipe-editor {
   margin-left: 10px;
 }
 
+h2 div.recipe-editor {
+  display: inline-block;
+  margin-left: 10px;
+}
+
 h2 div.report-editor {
   display: inline-block;
   margin-left: 5px;
@@ -51,6 +56,14 @@ li div.report-editor {
   display: inline-block;
   margin-left: 5px;
 }
+
+/* user */
+
+h1 div.user-editor {
+  display: inline-block;
+  margin-left: 10px;
+}
+
 
 /* stars */
 
