@@ -9,13 +9,6 @@
 
 <div class="recipes">
   <ul>
-    <% @recipes.each do |recipe| %>
-      <li>
-        <h2><%=  link_to recipe.title, recipe_path(recipe), id:"recipe_title" %></h2>
-        <div>
-          <%= recipe.time %>min | <%= render partial:"shared/rate", locals:{rate: recipe.average_rate} %> | <%= recipe.reports.count %> reports -- Recipe by: <%= link_to recipe.creator.username, user_path(recipe.creator) %>
-        </div>
-      </li>
-    <% end %>
+    <%= render partial: "shared/recipes", collection: @recipes, as: :recipe %>
   </ul>
 </div>

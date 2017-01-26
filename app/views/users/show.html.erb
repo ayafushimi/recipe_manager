@@ -1,2 +1,9 @@
-<h1>User#show</h1>
-<p>Find me in app/views/user/show.html.erb</p>
+<h1><%= @user.username %></h1>
+
+<h2>Recipes</h2>
+
+<div class="recipes">
+  <ul>
+    <%= render partial: "shared/recipes", collection: @recipes, as: :recipe %>
+  </ul>
+</div>
