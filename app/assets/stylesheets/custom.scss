@@ -52,6 +52,64 @@ li div.report-editor {
   margin-left: 5px;
 }
 
+/* stars */
+
+div.sm-star-icon {
+  width: 80px;
+  height: 18px;
+  background-image: image-url("small_stars.png");
+  -webkit-background-size: 339px 20px;
+  background-size: 339px 20px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  vertical-align: top;
+}
+
+div.sm-star-5-0 {
+  background-position: -4px;
+}
+
+div.sm-star-4-5 {
+  background-position: -174px;
+}
+
+div.sm-star-4-0 {
+  background-position: -20px;
+}
+
+div.sm-star-3-5 {
+  background-position: -190px;
+}
+
+div.sm-star-3-0 {
+  background-position: -36px;
+}
+
+div.sm-star-2-5 {
+  background-position: -206px;
+}
+
+div.sm-star-2-0 {
+  background-position: -52px;
+}
+
+div.sm-star-1-5 {
+  background-position: -222px;
+}
+
+div.sm-star-1-0 {
+  background-position: -68px;
+}
+
+div.sm-star-0-5 {
+  background-position: -238px;
+}
+
+div.sm-star-0-0 {
+  background-position: -84px;
+}
+
+
 /* form */
 
 li .form-control {
