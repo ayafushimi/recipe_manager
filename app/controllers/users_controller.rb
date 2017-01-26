@@ -14,6 +14,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
+    @recipes = @user.recipes
+    @reports = @user.reports
   end
 
   def edit
