@@ -1,5 +1,5 @@
 <h1>Reports for <%= link_to @recipe.title, recipe_path(@recipe) %></h1>
 
 <ul>
-  <%= render partial: "reports", collection: @reports, as: :report %>
+  <%= render partial: "shared/reports", collection: @reports, as: :report %>
 </ul>
