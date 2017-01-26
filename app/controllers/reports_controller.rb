@@ -32,6 +32,13 @@ class ReportsController < ApplicationController
     end
   end
 
+  def destroy
+    report =  Report.find(params[:id])
+    recipe = report.recipe
+    report.destroy
+    redirect_to recipe_path(recipe)
+  end
+
   private
 
   def report_params
