@@ -62,7 +62,7 @@ div.sm-star-icon {
   background-size: 339px 20px;
   background-repeat: no-repeat;
   display: inline-block;
-  vertical-align: top;
+  vertical-align: middle;;
 }
 
 div.sm-star-5-0 {
@@ -109,6 +109,60 @@ div.sm-star-0-0 {
   background-position: -84px;
 }
 
+div.lg-star-icon {
+  width: 95px;
+  height: 20px;
+  background-image: image-url("large_stars.png");
+  -webkit-background-size: 339px 20px;
+  background-size: 400px 28px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  vertical-align: middle;;
+}
+
+div.lg-star-5-0 {
+  background-position: -5px;
+}
+
+div.lg-star-4-5 {
+  background-position: -205px;
+}
+
+div.lg-star-4-0 {
+  background-position: -24px;
+}
+
+div.lg-star-3-5 {
+  background-position: -224px;
+}
+
+div.lg-star-3-0 {
+  background-position: -43px;
+}
+
+div.lg-star-2-5 {
+  background-position: -243px;
+}
+
+div.lg-star-2-0 {
+  background-position: -62px;
+}
+
+div.lg-star-1-5 {
+  background-position: -262px;
+}
+
+div.lg-star-1-0 {
+  background-position: -81px;
+}
+
+div.lg-star-0-5 {
+  background-position: -281px;
+}
+
+div.lg-star-0-0 {
+  background-position: -100px;
+}
 
 /* form */
 

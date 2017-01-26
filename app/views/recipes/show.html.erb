@@ -8,7 +8,7 @@
       <% end %>
     </div>
   </h1>
-  <h3><%= @recipe.time %>min | <%= @recipe.average_rate %> | <%= @recipe.reports.count %> reports</h3>
+  <h3><%= @recipe.time %>min | <%= render partial:"shared/lg_rate", locals:{rate: @recipe.average_rate} %> | <%= @recipe.reports.count %> reports</h3>
   <p>Recipe by: <%= link_to @recipe.creator.username, user_path(@recipe.creator) %></p>
 
 </div>
