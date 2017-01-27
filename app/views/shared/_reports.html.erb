@@ -1,7 +1,7 @@
 <li>
   <%= render partial:"shared/rate", locals:{rate: report.rate} %> by <%= link_to report.user.username, user_path(report.user) %>
   <div class="report-editor">
-    <% if report.user == current_user %>
+    <% if logged_in? && report.user == current_user %>
       <%= link_to "Edit", edit_report_path(report), class: "btn btn-xs btn-primary" %>
       <%= link_to "Delete", report_path(report), method: :delete, class: "btn btn-xs btn-default" %>
     <% end %>
