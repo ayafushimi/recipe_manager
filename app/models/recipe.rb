@@ -24,6 +24,7 @@ class Recipe < ApplicationRecord
   def delete_children
     self.directions.each {|d| d.destroy}
     self.recipe_ingredients.each {|ri| ri.destroy}
+    self.reports.each {|report| report.destroy}
   end
 
   def average_rate
