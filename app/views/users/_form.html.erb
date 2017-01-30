@@ -1,5 +1,6 @@
 <div class="form-field">
   <%= form_for(user) do |f| %>
+    <%= render 'shared/errors', object: f.object %>
     <div class="form-group">
       <%= f.label :username %>
       <%= f.text_field :username, class: "form-control" %>
