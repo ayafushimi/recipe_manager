@@ -1,5 +1,6 @@
 class ReportsController < ApplicationController
   before_action :need_login, except: [:index, :show]
+  before_action :only_owner, only: [:edit, :update, :destroy]
 
   def index
     @recipe = Recipe.find(params[:recipe_id])
@@ -49,4 +50,13 @@ class ReportsController < ApplicationController
   def report_params
     params.require(:report).permit(:id, :rate, :comment, :user_id)
   end
+
+  def only_owner
+    report = Report.find(params[:id])
+    unless logged_in? && report.user_id == session[:user_id]
+      flash[:danger] = "That page is only for owners."
+      redirect_to root_path
+    end
+  end
+
 end
