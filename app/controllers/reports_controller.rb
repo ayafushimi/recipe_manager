@@ -13,6 +13,7 @@ class ReportsController < ApplicationController
     @recipe = Recipe.find(params[:recipe_id])
     @report = @recipe.reports.build(report_params)
     if @report.save
+      flash[:success] = "Added new report."
       redirect_to recipe_path(@recipe)
     else
       render :new
@@ -26,6 +27,7 @@ class ReportsController < ApplicationController
   def update
     @report =  Report.find(params[:id])
     if @report.update(report_params)
+      flash[:success] = "Updated report."
       redirect_to recipe_path(@report.recipe)
     else
       render :edit
@@ -36,6 +38,7 @@ class ReportsController < ApplicationController
     report =  Report.find(params[:id])
     recipe = report.recipe
     report.destroy
+    flash[:success] = "Deleted report."
     redirect_to recipe_path(recipe)
   end
 
