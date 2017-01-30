@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
+      flash[:success] = "Successfully signed up."
       redirect_to user_path(@user)
     else
       render :new
@@ -26,6 +27,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
+      flash[:success] = "Successfully updated."
       redirect_to user_path(@user)
     else
       render :edit
@@ -35,6 +37,7 @@ class UsersController < ApplicationController
   def destroy
     User.find(params[:id]).destroy
     session.delete(:user_id)
+    flash[:success] = "Deleted user."
     redirect_to root_url
   end
 
