@@ -5,6 +5,8 @@ class Recipe < ApplicationRecord
   has_many :reports
   belongs_to :creator, class_name: "User", foreign_key: "user_id"
 
+  validates :title, presence: true
+
   accepts_nested_attributes_for :recipe_ingredients, :directions
   before_save :erase_empty_directions, :erase_empty_ingredients, :erase_empty_recipe_ingredients
   before_destroy :delete_children
