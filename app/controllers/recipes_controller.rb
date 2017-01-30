@@ -72,7 +72,7 @@ class RecipesController < ApplicationController
     recipe = Recipe.find(params[:id])
     unless logged_in? && recipe.user_id == session[:user_id]
       flash[:danger] = "That page is only for owners."
-      redirect_to root_path
+      redirect_back(fallback_location: root_path)
     end
   end
 end

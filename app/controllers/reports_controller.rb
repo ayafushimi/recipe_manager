@@ -55,7 +55,7 @@ class ReportsController < ApplicationController
     report = Report.find(params[:id])
     unless logged_in? && report.user_id == session[:user_id]
       flash[:danger] = "That page is only for owners."
-      redirect_to root_path
+      redirect_back(fallback_location: recipe_path(report.recipe))
     end
   end
 
