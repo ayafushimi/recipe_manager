@@ -14,6 +14,7 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.create(recipe_params)
     if @recipe.save
+      flash[:success] = "Added new recipe."
       redirect_to recipe_path(@recipe)
     else
       render :new
@@ -35,6 +36,7 @@ class RecipesController < ApplicationController
   def update
     @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
+      flash[:success] = "Updated recipe."
       redirect_to recipe_path(@recipe)
     else
       render :edit
@@ -43,6 +45,7 @@ class RecipesController < ApplicationController
 
   def destroy
     Recipe.find(params[:id]).destroy
+    flash[:success] = "Deleted recipe."
     redirect_to recipes_path
   end
 
