@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
   before_action :need_login, except: [:index, :show]
+  before_action :only_owner, only: [:edit, :update, :destroy]
 
   def index
     @recipes = Recipe.all
@@ -65,5 +66,13 @@ class RecipesController < ApplicationController
       ],
       directions_attributes: [:id, :text]
     )
+  end
+
+  def only_owner
+    recipe = Recipe.find(params[:id])
+    unless logged_in? && recipe.user_id == session[:user_id]
+      flash[:danger] = "That page is only for owners."
+      redirect_to root_path
+    end
   end
 end
