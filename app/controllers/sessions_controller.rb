@@ -4,11 +4,12 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(email: user_params[:email])
-    if @user.try(:authenticate, user_params[:password])
-      session[:user_id] = @user.id
+    @input = session_params[:email]
+    user = User.find_by(email: @input)
+    if user.try(:authenticate, session_params[:password])
+      session[:user_id] = user.id
       flash[:success] = "Successfully signed in."
-      redirect_to user_path(@user)
+      redirect_to user_path(user)
     else
       flash.now[:danger] = "Invalid email/password combination."
       render :new
@@ -23,7 +24,7 @@ class SessionsController < ApplicationController
 
   private
 
-  def user_params
-    params.require(:user)
+  def session_params
+    params.require(:session)
   end
 end
