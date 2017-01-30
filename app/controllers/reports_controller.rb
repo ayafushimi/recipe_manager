@@ -10,10 +10,10 @@ class ReportsController < ApplicationController
   end
 
   def create
-    recipe = Recipe.find(params[:recipe_id])
-    report = recipe.reports.build(report_params)
-    if report.save
-      redirect_to recipe_path(recipe)
+    @recipe = Recipe.find(params[:recipe_id])
+    @report = @recipe.reports.build(report_params)
+    if @report.save
+      redirect_to recipe_path(@recipe)
     else
       render :new
     end
@@ -24,9 +24,9 @@ class ReportsController < ApplicationController
   end
 
   def update
-    report =  Report.find(params[:id])
-    if report.update(report_params)
-      redirect_to recipe_path(report.recipe)
+    @report =  Report.find(params[:id])
+    if @report.update(report_params)
+      redirect_to recipe_path(@report.recipe)
     else
       render :edit
     end
