@@ -1,5 +1,6 @@
 <div class="form-field">
   <%= form_for(report, url: url) do |f|%>
+    <%= render 'shared/errors', object: f.object %>
     <div class="form-group">
       <%= f.label(:rate) %>
       <%= f.number_field(:rate, in: 1...6) %>
