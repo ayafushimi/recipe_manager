@@ -188,8 +188,13 @@ li .form-inline .form-control {
   margin-right: 10px;
 }
 
+div#form_error ul {
+  color: #a94442
+}
+
 /* alert */
 
 .alert {
   margin-top: 20px;
+  margin-bottom: 10px;
 }
