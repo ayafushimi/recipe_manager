@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
       email: user_params[:email])
     if @user.try(:authenticate, user_params[:password])
       session[:user_id] = @user.id
+      flash[:success] = "Successfully signed in."
       redirect_to user_path(@user)
     else
       render :new
@@ -17,6 +18,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete(:user_id)
+    flash[:success] = "Signed out."
     redirect_to root_url
   end
 
