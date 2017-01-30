@@ -1,4 +1,6 @@
 class ReportsController < ApplicationController
+  before_action :need_login, except: [:index, :show]
+
   def index
     @recipe = Recipe.find(params[:recipe_id])
     @reports = @recipe.reports
