@@ -1,21 +1,3 @@
 <h1>Add new report</h1>
 
-<div class="form-field">
-  <%= form_for(@report, url: recipe_reports_path(@recipe)) do |f|%>
-    <div class="form-group">
-      <%= f.label(:rate) %>
-      <%= f.number_field(:rate) %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label(:comment) %>
-      <%= f.text_field(:comment) %>
-    </div>
-
-    <%= f.hidden_field(:user_id, value: current_user.id) %>
-
-    <div class="form-group">
-      <%= f.submit "Add new report", class: "btn btn-primary" %>
-    </div>
-  <% end %>
-</div>
+<%= render partial: "form", locals: {report: @report, url: recipe_reports_path(@recipe)} %>

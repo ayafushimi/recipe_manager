@@ -1,19 +1,3 @@
 <h1>Edit my report</h1>
 
-<div class="form-field">
-  <%= form_for(@report) do |f|%>
-    <div class="form-group">
-      <%= f.label(:rate) %>
-      <%= f.number_field(:rate, in: 1...6) %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label(:comment) %>
-      <%= f.text_field(:comment) %>
-    </div>
-
-    <div class="form-group">
-      <%= f.submit "Update report", class: "btn btn-primary" %>
-    </div>
-  <% end %>
-</div>
+<%= render partial: "form", locals: {report: @report, url: report_path(@report)} %>
