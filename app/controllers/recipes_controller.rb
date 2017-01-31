@@ -6,6 +6,10 @@ class RecipesController < ApplicationController
     @recipes = Recipe.all
   end
 
+  def saerch
+
+  end
+
   def new
     @recipe = Recipe.new
     6.times {

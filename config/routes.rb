@@ -5,8 +5,10 @@ Rails.application.routes.draw do
     resources :reports, shallow: true
   end
 
+  get 'search', to: 'recipes#search'
+
   resources :users, only: [:create, :show, :edit, :update, :destroy]
-  get 'signup', to: 'users#new', as: :signup
+  get 'signup', to: 'users#new'
 
   get 'signin', to: 'sessions#new'
   post 'signin', to: 'sessions#create'
