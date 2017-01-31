@@ -23,4 +23,12 @@ module SessionsHelper
     redirect_to(session[:forwarding_path] || default)
     session.delete(:forwarding_path)
   end
+
+  def only_owner
+    recipe = Recipe.find(params[:id])
+    unless logged_in? && recipe.user_id == session[:user_id]
+      flash[:danger] = "That page is only for owners."
+      redirect_back(fallback_location: root_path)
+    end
+  end
 end
