@@ -1,13 +1,14 @@
 class RecipesController < ApplicationController
-  before_action :need_login, except: [:index, :show]
+  before_action :need_login, except: [:index, :show, :search]
   before_action :only_owner, only: [:edit, :update, :destroy]
 
   def index
     @recipes = Recipe.all
+    @search = Search.new
   end
 
-  def saerch
-
+  def search
+    raise
   end
 
   def new
