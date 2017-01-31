@@ -19,11 +19,21 @@
   text-decoration: none;
 }
 
+@media (max-width: 767px) {
+  nav {
+    clear: both;
+  }
+
+  li a#home {
+    display: none;
+  }
+}
+
 /* container next to header */
 
 @media (max-width: 767px) {
   header + div.container {
-    margin-top: 178.5px;
+    margin-top: 130.5px;
   }
 }
 
