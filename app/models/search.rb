@@ -1,4 +1,6 @@
-class Search < ApplicationRecord
+class Search
+  include ActiveModel::Model
+  
   ATTRIBUTES = %i(
     order_by_rate
     order_by_time
