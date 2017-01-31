@@ -8,8 +8,9 @@ class RecipesController < ApplicationController
   end
 
   def search
-    search = Search.new(search_params)
-    raise
+    @search = Search.new(search_params)
+    @recipes = @search.filter
+    render :index
   end
 
   def new
