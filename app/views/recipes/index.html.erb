@@ -15,6 +15,11 @@
         <%= f.check_box(:order_by_rate) %>
         <%= f.label(:order_by_rate) %>
       </div>
+      <div class="checkbox">
+        <%= f.check_box(:order_by_time) %>
+        <%= f.label(:order_by_time) %>
+      </div>
+      <%= f.submit("Search", class: "btn btn-default") %>
     <% end %>
   </div>
 </div>

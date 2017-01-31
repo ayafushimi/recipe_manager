@@ -18,7 +18,8 @@ class Search
 
   def filter
     result = Recipe.all
-    result = result.order_by_rate if order_by_rate.present?
+    result = result.order_by_rate if order_by_rate == "1"
+    result = result.order_by_time if order_by_time == "1"
     result
   end
 end
