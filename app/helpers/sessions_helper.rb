@@ -16,7 +16,11 @@ module SessionsHelper
   end
 
   def store_path
-    session[:fowarding_path] = request.fullpath if request.get?
+    session[:forwarding_path] = request.fullpath if request.get?
   end
 
+  def redirect_back_or(default)
+    redirect_to(session[:forwarding_path] || default)
+    session.delete(:forwarding_path)
+  end
 end
