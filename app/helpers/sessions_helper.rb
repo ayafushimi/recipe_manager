@@ -9,9 +9,14 @@ module SessionsHelper
 
   def need_login
     unless logged_in?
+      store_path
       flash[:danger] = "Please sign in to access that page."
       redirect_to signin_path
     end
+  end
+
+  def store_path
+    session[:fowarding_path] = request.fullpath if request.get?
   end
 
 end
