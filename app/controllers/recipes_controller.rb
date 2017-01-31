@@ -8,6 +8,7 @@ class RecipesController < ApplicationController
   end
 
   def search
+    search = Search.new(search_params)
     raise
   end
 
@@ -71,6 +72,10 @@ class RecipesController < ApplicationController
       ],
       directions_attributes: [:id, :text]
     )
+  end
+
+  def search_params
+    params.require(:search).permit(:order_by_rate)
   end
 
   def only_owner
