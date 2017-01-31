@@ -1,6 +1,6 @@
 class Search
   include ActiveModel::Model
-  
+
   ATTRIBUTES = %i(
     order_by_rate
     order_by_time
@@ -16,9 +16,9 @@ class Search
   )
   attr_accessor(*ATTRIBUTES)
 
-  def self.filter
+  def filter
     result = Recipe.all
-    result = result.order_by_time
+    result = result.order_by_rate if order_by_rate.present?
     result
   end
 end
