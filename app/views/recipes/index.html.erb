@@ -7,6 +7,18 @@
   </div>
 </h1>
 
+<div class="search-area panel panel-default">
+  <div class="panel-heading">Search recipes</div>
+  <div class="panel-body">
+    <%= form_for(@search, url: search_path, method: "GET") do |f| %>
+      <div class="checkbox">
+        <%= f.check_box(:order_by_rate) %>
+        <%= f.label(:order_by_rate) %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
 <div class="recipes">
   <ul>
     <%= render partial: "shared/recipes", collection: @recipes, as: :recipe %>
