@@ -19,6 +19,10 @@
         <%= f.check_box(:order_by_time) %>
         <%= f.label(:order_by_time) %>
       </div>
+      <div class="checkbox">
+        <%= f.check_box(:has_report) %>
+        <%= f.label(:has_report, "Only with report") %>
+      </div>
       <%= f.submit("Search", class: "btn btn-default") %>
     <% end %>
   </div>
@@ -27,5 +31,6 @@
 <div class="recipes">
   <ul>
     <%= render partial: "shared/recipes", collection: @recipes, as: :recipe %>
+    <%= render partial: "shared/recipes", collection: @no_repo, as: :recipe if @no_repo %>
   </ul>
 </div>
