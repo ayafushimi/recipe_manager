@@ -12,4 +12,8 @@ class User < ApplicationRecord
     self.recipes.each {|recipe| recipe.destroy}
     self.reports.each {|report| report.destroy}
   end
+
+  def self.only_creator
+    self.where(id: Recipe.pluck(:user_id).uniq)
+  end
 end
