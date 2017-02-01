@@ -68,7 +68,7 @@ class Recipe < ApplicationRecord
   end
 
   def self.has_no_report
-    self.has_no_report_scope
+    self.where.not(id: Report.pluck(:recipe_id).uniq)
   end
 
   def self.rate_over(int)
