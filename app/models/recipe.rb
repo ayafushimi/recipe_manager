@@ -87,8 +87,8 @@ class Recipe < ApplicationRecord
     self.where("time <= ?", int)
   end
 
-  def self.by_creator(user)
-    self.where(user_id: user.id)
+  def self.by_creator(user_id)
+    self.where(user_id: user_id)
   end
 
   def self.by_ingredient(ingredient)

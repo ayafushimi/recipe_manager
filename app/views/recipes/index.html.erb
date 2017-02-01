@@ -39,6 +39,10 @@
         <%= f.label(:time_under) %>
         <%= f.number_field(:time_under) %>
       </div>
+      <div class="form-group">
+        <%= f.label(:by_creator) %>
+        <%= f.select(:by_creator, User.only_creator.collect {|u| [ u.username, u.id ] }, {prompt: 'Select Creator'}) %>
+      </div>
       <%= f.submit("Search", class: "btn btn-default") %>
     <% end %>
   </div>
