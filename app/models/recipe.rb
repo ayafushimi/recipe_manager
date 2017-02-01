@@ -1,4 +1,6 @@
 class Recipe < ApplicationRecord
+  include ActiveRecord::UnionScope
+
   has_many :recipe_ingredients
   has_many :ingredients, through: :recipe_ingredients
   has_many :directions
@@ -41,13 +43,21 @@ class Recipe < ApplicationRecord
     end
   end
 
+  scope :with_report, -> { joins(:reports) }
+  scope :select_all, -> { select("'recipes'.'id', 'recipes'.'user_id', 'recipes'.'title', 'recipes'.'time', 'recipes'.'link','reports'.'recipe_id', AVG('reports'.'rate')") }
+  scope :group_by_rate, -> { group("'reports'.'recipe_id'") }
+  scope :order_desc, -> { order("AVG('reports'.'rate') DESC") }
+  # scope :order_by_rate_scope, -> { with_report.select_all.group_by_rate.order_desc }
+  # scope :has_no_report_scope, -> { where.not(id: Report.pluck(:recipe_id).uniq) }
+  # scope :order_by_rate_include_no_report_scope, -> { union_scope(order_by_rate_scope, has_no_report_scope) }
+
   def self.order_by_rate
-    self.joins(:reports).select("'recipes'.'id', 'recipes'.'user_id', 'recipes'.'title', 'recipes'.'time', 'recipes'.'link','reports'.'recipe_id', AVG('reports'.'rate')").group("'reports'.'recipe_id'").order("AVG('reports'.'rate') DESC")
+    self.with_report.select_all.group_by_rate.order_desc
   end
 
-  def self.order_by_rate_include_no_report
-    all.sort {|a,b| b.average_rate <=> a.average_rate}
-  end
+  # def self.order_by_rate_include_no_report
+  #   self.order_by_rate_include_no_report_scope
+  # end
 
   def self.order_by_time
     self.order(:time)
@@ -58,15 +68,15 @@ class Recipe < ApplicationRecord
   end
 
   def self.has_no_report
-    self.where.not(id: Report.pluck(:recipe_id).uniq)
+    self.has_no_report_scope
   end
 
   def self.rate_over(int)
-    self.joins(:reports).select("'recipes'.'id', 'recipes'.'user_id', 'recipes'.'title', 'recipes'.'time', 'recipes'.'link','reports'.'recipe_id', AVG('reports'.'rate')").group("'reports'.'recipe_id'").having("AVG('reports'.'rate') >= ?", int)
+    self.with_report.select_all.group_by_rate.having("AVG('reports'.'rate') >= ?", int)
   end
 
   def self.rate_under(int)
-    self.joins(:reports).select("'recipes'.'id', 'recipes'.'user_id', 'recipes'.'title', 'recipes'.'time', 'recipes'.'link','reports'.'recipe_id', AVG('reports'.'rate')").group("'reports'.'recipe_id'").having("AVG('reports'.'rate') <= ?", int)
+    self.with_report.select_all.group_by_rate.having("AVG('reports'.'rate') <= ?", int)
   end
 
   def self.time_over(int)
@@ -86,6 +96,6 @@ class Recipe < ApplicationRecord
   end
 
   def self.has_report_by(user)
-    self.joins(:reports).where("'reports'.'user_id' = ?", user.id)
+    self.with_report.where("'reports'.'user_id' = ?", user.id)
   end
 end
