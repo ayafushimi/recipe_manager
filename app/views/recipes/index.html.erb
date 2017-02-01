@@ -23,6 +23,10 @@
         <%= f.check_box(:has_report) %>
         <%= f.label(:has_report, "Only with report") %>
       </div>
+      <div class="form-group">
+        <%= f.label(:rate_over) %>
+        <%= f.number_field(:rate_over, in: 1...6) %>
+      </div>
       <%= f.submit("Search", class: "btn btn-default") %>
     <% end %>
   </div>

@@ -12,6 +12,7 @@ class RecipesController < ApplicationController
     @recipes = @search.filter
     @no_repo = $no_repo
     $no_repo = nil
+    # raise
     render :index
   end
 
@@ -81,7 +82,8 @@ class RecipesController < ApplicationController
     params.require(:search).permit(
       :order_by_rate,
       :order_by_time,
-      :has_report
+      :has_report,
+      :rate_over
     )
   end
 end

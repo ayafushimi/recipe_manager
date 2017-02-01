@@ -17,12 +17,13 @@ class Search
 
   def filter
     result = Recipe.all
-    if order_by_rate == "1" && has_report == "0"
+    if order_by_rate == "1" && has_report == "0" && !rate_over.present?
       $no_repo = result.has_no_report
     end
     result = result.order_by_rate if order_by_rate == "1"
     result = result.order_by_time if order_by_time == "1"
     result = result.has_report if has_report == "1"
+    result = result.rate_over(rate_over.to_i) if rate_over.present?
     result
   end
 end
