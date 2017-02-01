@@ -12,7 +12,7 @@ Specs:
 - [x] Include signup (/signup, UsersController#new)
 - [x] Include login (/signin, SessionsController#new)
 - [x] Include logout (/signout, SessionsController#destroy)
-- [ ] Include third party signup/login (how e.g. Devise/OmniAuth)
+- [x] Include third party signup/login (OmniAuth)
 - [x] Include nested resource show or index (/recipes/:recipe_id/reports)
 - [x] Include nested resource "new" form (/recipes/:recipe_id/reports/new)
 - [x] Include form display of validation errors (/signup)
