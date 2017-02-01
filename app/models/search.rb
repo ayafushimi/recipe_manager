@@ -21,6 +21,7 @@ class Search
     result = result.time_under(time_under.to_i) if time_under.present?
     result = result.by_creator(by_creator.to_i) if by_creator.present?
     result = result.by_ingredient(by_ingredient.to_i) if by_ingredient.present?
+    result = result.has_report_by(has_report_by.to_i) if has_report_by.present?
     if (order_by_rate == "1" && has_report == "0" && !rate_over.present?) || (rate_under.present? && has_report == "0")
       $no_repo = result.has_no_report
     end
@@ -29,6 +30,7 @@ class Search
     result = result.has_report if has_report == "1"
     result = result.rate_over(rate_over.to_i) if rate_over.present?
     result = result.rate_under(rate_under.to_i) if rate_under.present?
+
     result
   end
 end

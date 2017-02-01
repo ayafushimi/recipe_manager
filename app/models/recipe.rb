@@ -95,7 +95,7 @@ class Recipe < ApplicationRecord
     self.where(id: RecipeIngredient.where(ingredient_id: ingredient_id).pluck(:recipe_id).uniq)
   end
 
-  def self.has_report_by(user)
-    self.with_report.where("'reports'.'user_id' = ?", user.id)
+  def self.has_report_by(user_id)
+    self.with_report.where("'reports'.'user_id' = ?", user_id)
   end
 end

@@ -88,7 +88,8 @@ class RecipesController < ApplicationController
       :time_over,
       :time_under,
       :by_creator,
-      :by_ingredient
+      :by_ingredient,
+      :has_report_by
     )
   end
 end
