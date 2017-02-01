@@ -7,7 +7,7 @@ Specs:
 - [x] Include at least one has_many through relationship (Recipe has_many Ingredients through RecipeIngredients)
 - [x] The "through" part of the has_many through includes at least one user submittable attribute (recipe_ingredient.quantity)
 - [x] Include reasonable validations for simple model objects (User, Report)
-- [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+- [x] Include a class level ActiveRecord scope method ( Recipe.order_by_time URL: / )
 - [x] Include a nested form writing to an associated model using a custom attribute writer (/recipe/new, Recipe -> RecipeIngredient -> Ingredient)
 - [x] Include signup (/signup, UsersController#new)
 - [x] Include login (/signin, SessionsController#new)
