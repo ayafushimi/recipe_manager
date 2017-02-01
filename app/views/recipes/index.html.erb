@@ -11,13 +11,9 @@
   <div class="panel-heading">Search recipes</div>
   <div class="panel-body">
     <%= form_for(@search, url: search_path, method: "GET") do |f| %>
-      <div class="checkbox">
-        <%= f.check_box(:order_by_rate) %>
-        <%= f.label(:order_by_rate) %>
-      </div>
-      <div class="checkbox">
-        <%= f.check_box(:order_by_time) %>
-        <%= f.label(:order_by_time) %>
+      <div class="form-group">
+        <%= f.label(:order_by) %>
+        <%= f.select(:order_by, options_for_select([["Rate", "rate"], ["Time", "time"]]), {prompt: 'Select'}) %>
       </div>
       <div class="checkbox">
         <%= f.check_box(:has_report) %>
