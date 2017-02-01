@@ -16,4 +16,8 @@ class User < ApplicationRecord
   def self.only_creator
     self.where(id: Recipe.pluck(:user_id).uniq)
   end
+
+  def self.has_report
+    self.where(id: Report.pluck(:user_id).uniq)
+  end
 end
