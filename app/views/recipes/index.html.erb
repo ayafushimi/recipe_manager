@@ -51,7 +51,8 @@
         <%= f.label(:has_report_by) %>
         <%= f.select(:has_report_by, User.has_report.collect {|u| [ u.username, u.id ] }, {prompt: 'Select User'}) %>
       </div>
-      <%= f.submit("Search", class: "btn btn-default") %>
+      <%= f.submit("Search", class: "btn btn-primary") %>
+      <%= link_to "Clear", root_path, class: "btn btn-sm btn-default" %>
     <% end %>
   </div>
 </div>
