@@ -17,6 +17,7 @@ class Search
 
   def filter
     result = Recipe.all
+    result = result.time_over(time_over.to_i) if time_over.present?
     if (order_by_rate == "1" && has_report == "0" && !rate_over.present?) || (rate_under.present? && has_report == "0")
       $no_repo = result.has_no_report
     end
