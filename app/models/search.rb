@@ -21,15 +21,13 @@ class Search
     result = result.by_creator(by_creator.to_i) if by_creator.present?
     result = result.by_ingredient(by_ingredient.to_i) if by_ingredient.present?
     result = result.has_report_by(has_report_by.to_i) if has_report_by.present?
-    if (order_by == "rate" && has_report == "0" && !rate_over.present?) || (rate_under.present? && has_report == "0")
+    if (order_by == "rate" && has_report == "0" && !rate_over.present?)
       $no_repo = result.has_no_report
     end
     result = result.order_by_rate if order_by == "rate"
     result = result.order_by_time if order_by == "time"
     result = result.has_report if has_report == "1"
     result = result.rate_over(rate_over.to_i) if rate_over.present?
-    result = result.rate_under(rate_under.to_i) if rate_under.present?
-
     result
   end
 end

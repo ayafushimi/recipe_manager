@@ -12,7 +12,6 @@ class RecipesController < ApplicationController
     @recipes = @search.filter
     @no_repo = $no_repo
     $no_repo = nil
-    raise
     render :index
   end
 
@@ -83,7 +82,6 @@ class RecipesController < ApplicationController
       :order_by,
       :has_report,
       :rate_over,
-      :rate_under,
       :time_over,
       :time_under,
       :by_creator,

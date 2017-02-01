@@ -75,9 +75,9 @@ class Recipe < ApplicationRecord
     self.with_report.select_all.group_by_rate.having("AVG('reports'.'rate') >= ?", int)
   end
 
-  def self.rate_under(int)
-    self.with_report.select_all.group_by_rate.having("AVG('reports'.'rate') <= ?", int)
-  end
+  # def self.rate_under(int)
+  #   self.with_report.select_all.group_by_rate.having("AVG('reports'.'rate') <= ?", int)
+  # end
 
   def self.time_over(int)
     self.where("time >= ?", int)

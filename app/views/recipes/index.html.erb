@@ -13,7 +13,7 @@
     <%= form_for(@search, url: search_path, method: "GET") do |f| %>
       <div class="form-group">
         <%= f.label(:order_by) %>
-        <%= f.select(:order_by, options_for_select([["Rate", "rate"], ["Time", "time"]]), {prompt: 'Select'}) %>
+        <%= f.select(:order_by, [["Rate", "rate"], ["Time", "time"]], {include_blank: 'Select'}) %>
       </div>
       <div class="checkbox">
         <%= f.check_box(:has_report) %>
@@ -22,10 +22,6 @@
       <div class="form-group">
         <%= f.label(:rate_over) %>
         <%= f.number_field(:rate_over, in: 1...6) %>
-      </div>
-      <div class="form-group">
-        <%= f.label(:rate_under) %>
-        <%= f.number_field(:rate_under, in: 1...6) %>
       </div>
       <div class="form-group">
         <%= f.label(:time_over) %>
@@ -37,15 +33,15 @@
       </div>
       <div class="form-group">
         <%= f.label(:by_creator) %>
-        <%= f.select(:by_creator, User.only_creator.collect {|u| [ u.username, u.id ] }, {prompt: 'Select Creator'}) %>
+        <%= f.select(:by_creator, User.only_creator.collect {|u| [ u.username, u.id ] }, {include_blank: 'Select Creator'}) %>
       </div>
       <div class="form-group">
         <%= f.label(:by_ingredient) %>
-        <%= f.select(:by_ingredient, Ingredient.has_recipe.collect {|i| [ i.title, i.id ] }, {prompt: 'Select Ingredient'}) %>
+        <%= f.select(:by_ingredient, Ingredient.has_recipe.collect {|i| [ i.title, i.id ] }, {include_blank: 'Select Ingredient'}) %>
       </div>
       <div class="form-group">
         <%= f.label(:has_report_by) %>
-        <%= f.select(:has_report_by, User.has_report.collect {|u| [ u.username, u.id ] }, {prompt: 'Select User'}) %>
+        <%= f.select(:has_report_by, User.has_report.collect {|u| [ u.username, u.id ] }, {include_blank: 'Select User'}) %>
       </div>
       <%= f.submit("Search", class: "btn btn-primary") %>
       <%= link_to "Clear", root_path, class: "btn btn-sm btn-default" %>
