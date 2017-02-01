@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   get 'signout', to: 'sessions#destroy'
 
   get '/auth/google_oauth2/callback', to: 'sessions#oauth'
+  get '/auth/facebook/callback', to: 'sessions#oauth'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
