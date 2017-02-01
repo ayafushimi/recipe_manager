@@ -85,7 +85,8 @@ class RecipesController < ApplicationController
       :has_report,
       :rate_over,
       :rate_under,
-      :time_over
+      :time_over,
+      :time_under
     )
   end
 end
