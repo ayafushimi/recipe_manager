@@ -1,6 +1,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/* body */
+body {
+  margin-bottom: 50px
+}
+
+
 /* header */
 
 #logo {
@@ -40,6 +46,21 @@
 @media (min-width: 768px) {
   header + div.container {
     margin-top: 51px;
+  }
+}
+
+/* searchbox */
+
+.checkbox#only {
+  margin-left: 20px;
+
+  input[type="checkbox"] {
+    margin-left: 0px;
+  }
+
+  label {
+    margin-bottom: 5px;
+    font-weight: bold;
   }
 }
 
