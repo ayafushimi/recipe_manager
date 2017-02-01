@@ -1,10 +1,10 @@
 class User < ApplicationRecord
   has_many :reports
   has_many :recipes
-  has_secure_password
+  has_secure_password(validations: false)
 
   validates :username, :email, presence: true, uniqueness: true
-  validates :password, length: {in: 6..30}
+  validates :password, presence: true, length: {in: 6..30}, unless: Proc.new { |user| user.uid.present? }
 
   before_destroy :delete_children
 
