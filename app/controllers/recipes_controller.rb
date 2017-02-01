@@ -87,7 +87,8 @@ class RecipesController < ApplicationController
       :rate_under,
       :time_over,
       :time_under,
-      :by_creator
+      :by_creator,
+      :by_ingredient
     )
   end
 end

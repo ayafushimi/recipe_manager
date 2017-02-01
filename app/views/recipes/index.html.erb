@@ -43,6 +43,10 @@
         <%= f.label(:by_creator) %>
         <%= f.select(:by_creator, User.only_creator.collect {|u| [ u.username, u.id ] }, {prompt: 'Select Creator'}) %>
       </div>
+      <div class="form-group">
+        <%= f.label(:by_ingredient) %>
+        <%= f.select(:by_ingredient, Ingredient.has_recipe.collect {|i| [ i.title, i.id ] }, {prompt: 'Select Ingredient'}) %>
+      </div>
       <%= f.submit("Search", class: "btn btn-default") %>
     <% end %>
   </div>

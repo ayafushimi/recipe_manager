@@ -91,8 +91,8 @@ class Recipe < ApplicationRecord
     self.where(user_id: user_id)
   end
 
-  def self.by_ingredient(ingredient)
-    self.where(id: RecipeIngredient.where(ingredient_id: ingredient.id).pluck(:recipe_id).uniq)
+  def self.by_ingredient(ingredient_id)
+    self.where(id: RecipeIngredient.where(ingredient_id: ingredient_id).pluck(:recipe_id).uniq)
   end
 
   def self.has_report_by(user)
