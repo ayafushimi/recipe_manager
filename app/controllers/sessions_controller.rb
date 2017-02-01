@@ -16,6 +16,17 @@ class SessionsController < ApplicationController
     end
   end
 
+  def oauth
+    auth = request.env["omniauth.auth"]
+    @user = User.find_or_create_by(uid:auth[:uid]) do |u|
+      u.username = auth[:info][:name]
+      u.email = auth[:info][:email]
+    end
+    session[:user_id] = @user.id
+    flash[:success] = "Successfully signed in."
+    redirect_to user_path(@user)
+  end
+
   def destroy
     session.delete(:user_id)
     flash[:success] = "Signed out."
