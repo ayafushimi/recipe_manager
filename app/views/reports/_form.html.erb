@@ -1,3 +1,5 @@
+<p><strong>To recipe:</strong> <%= link_to(report.recipe.title) %></p>
+
 <div class="form-field">
   <%= form_for(report, url: url) do |f|%>
     <%= render 'shared/errors', object: f.object %>
