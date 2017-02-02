@@ -25,9 +25,21 @@ body {
   text-decoration: none;
 }
 
+nav .navbar-text {
+  font-style: italic;
+}
+
 @media (max-width: 767px) {
   nav {
     clear: both;
+    position: relative;
+    .navbar-text {
+      position: absolute;
+      bottom: 0px;
+      right: 0px;
+      margin-bottom: 7.5px;
+      font-size: 12px;
+    }
   }
 
   li a#home {
