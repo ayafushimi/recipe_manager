@@ -22,9 +22,14 @@ class SessionsController < ApplicationController
       u.username = auth[:info][:name]
       u.email = auth[:info][:email]
     end
-    session[:user_id] = @user.id
-    flash[:success] = "Successfully signed in."
-    redirect_to user_path(@user)
+    if @user.save
+      session[:user_id] = @user.id
+      flash[:success] = "Successfully signed up."
+      redirect_to user_path(@user)
+    else
+      flash.now[:danger] = @user.errors.full_messages_for(:email).join(" / ")
+      render :new
+    end
   end
 
   def destroy
