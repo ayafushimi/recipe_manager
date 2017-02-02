@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:success] = "Successfully signed up."
-      redirect_to user_path(@user)
+      redirect_back_or(user_path(@user))
     else
       flash.now[:danger] = @user.errors.full_messages_for(:email).join(" / ")
       render :new
