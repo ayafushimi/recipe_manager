@@ -1,4 +1,9 @@
-<h1>Reports for <%= link_to @recipe.title, recipe_path(@recipe) %></h1>
+<h1>
+  Reports for <%= link_to @recipe.title, recipe_path(@recipe) %>
+  <div class="report-editor">
+    <%= link_to "Add new report", new_recipe_report_path(@recipe), class: "btn btn-sm btn-primary" %>
+  </div>
+</h1>
 
 <ul>
   <%= render partial: "shared/reports", collection: @reports, as: :report %>
