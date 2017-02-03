@@ -17,7 +17,7 @@
   <h2>Ingredients</h2>
   <ul>
     <% @recipe.recipe_ingredients.each do |ri| %>
-      <li><%= ri.ingredient.title %> - <%= ri.quantity %> <%= ri.unit %></li>
+      <li><%= ri.quantity %> <%= ri.ingredient.title %></li>
     <% end %>
   </ul>
 </div>
@@ -39,9 +39,13 @@
     </div>
   </h2>
 
-  <ul>
-    <%= render partial: "shared/reports", collection: @recipe.reports, as: :report %>
-  </ul>
+  <% if @recipe.reports.size > 0 %>
+    <ul>
+      <%= render partial: "shared/reports", collection: @recipe.reports, as: :report %>
+    </ul>
 
-  <%= link_to "See all reports", recipe_reports_path(@recipe) %>
+    <%= link_to "See all reports", recipe_reports_path(@recipe) %>
+  <% else %>
+    <p><i>There is no report yet</i></p>
+  <% end %>
 </div>

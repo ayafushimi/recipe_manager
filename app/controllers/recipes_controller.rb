@@ -70,7 +70,6 @@ class RecipesController < ApplicationController
       recipe_ingredients_attributes: [
         :id,
         :quantity,
-        :unit,
         ingredient_attributes: [:id, :title]
       ],
       directions_attributes: [:id, :text]
