@@ -35,7 +35,7 @@ class Recipe < ApplicationRecord
     if reports.size == 0
       return 0
     else
-      sum = 0
+      sum = 0.0
       reports.each do |report|
         sum += report.rate
       end
