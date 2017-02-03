@@ -56,9 +56,11 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-    Recipe.find(params[:id]).destroy
+    recipe = Recipe.find(params[:id])
+    user = recipe.creator
+    recipe.destroy
     flash[:success] = "Deleted recipe."
-    redirect_to recipes_path
+    redirect_to user_path(user)
   end
 
   private
@@ -66,6 +68,7 @@ class RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(
       :title,
+      :time,
       :user_id,
       recipe_ingredients_attributes: [
         :id,
